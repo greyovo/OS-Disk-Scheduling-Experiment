@@ -15,17 +15,16 @@ public class RequestMaker {
 
     private HashSet<Integer> set = new HashSet<>();
     private int requestNum = 0;
+    private int trackNum = 1500;
+
     private Random random = new Random();
 
     public RequestMaker() {
 
     }
 
-//    public RequestMaker(int requestNum) {
-//        this.requestNum = requestNum;
-//    }
 
-    public ArrayList<Integer> getRandomRequest() {
+    public ArrayList<Integer> getRandomRequestList() {
         if (requestNum == 0) {
             System.out.println("未设置请求序列的个数。");
             return null;
@@ -84,6 +83,7 @@ public class RequestMaker {
         //最终乱序的结果
         System.out.println("\n乱序的随机请求序列：");
         System.out.println(requestList);
+        System.out.println("\n===============随机序列生成完毕==============\n");
 
         return requestList;
     }
@@ -107,10 +107,18 @@ public class RequestMaker {
         this.requestNum = requestNum;
     }
 
+    public void setTrackNum(int trackNum) {
+        this.trackNum = trackNum;
+    }
+
+    public int getTrackNum() {
+        return trackNum;
+    }
+
     @Test
     public void test() {
         setRequestNum(400);
-        getRandomRequest();
+        getRandomRequestList();
     }
 
 
