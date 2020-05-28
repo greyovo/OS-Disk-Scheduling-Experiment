@@ -3,9 +3,7 @@ package grey.disk.test;
 import grey.disk.util.RequestMaker;
 import org.junit.Test;
 
-import java.util.Comparator;
-
-public class SSTF extends BaseMethod {
+public class SSTF extends AbstractService {
 
 
     public SSTF() {
@@ -14,6 +12,10 @@ public class SSTF extends BaseMethod {
 
     @Override
     public void run() {
+        System.out.println("=============SSTF Test==============");
+        System.out.println("firstLocation = " + firstLocation);
+        System.out.println("requestList = " + requestList);
+        System.out.println("Started test...");
 
         int minDistance = Integer.MAX_VALUE;    //距离初始化为最大值
         int curLocation = firstLocation;

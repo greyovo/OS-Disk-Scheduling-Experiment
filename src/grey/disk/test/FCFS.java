@@ -5,13 +5,18 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class FCFS extends BaseMethod {
+public class FCFS extends AbstractService {
 
     public FCFS() {
     }
 
     @Override
     public void run() {
+        System.out.println("=============FCFS Test==============");
+        System.out.println("firstLocation = " + firstLocation);
+        System.out.println("requestList = " + requestList);
+        System.out.println("Started test...");
+
         resultList = new ArrayList<>();
         resultList.add(firstLocation);
         for (Integer i : requestList) {
