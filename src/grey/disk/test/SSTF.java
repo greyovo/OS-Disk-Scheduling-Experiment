@@ -3,7 +3,7 @@ package grey.disk.test;
 import grey.disk.util.RequestMaker;
 import org.junit.Test;
 
-public class SSTF extends AbstractService {
+public class SSTF extends AbstractSolution {
 
 
     public SSTF() {
@@ -12,6 +12,10 @@ public class SSTF extends AbstractService {
 
     @Override
     public void run() {
+        if (!isAllInitialized()) {
+            System.out.println("初始位置或最大磁道数未指定！");
+            return;
+        }
         System.out.println("=============SSTF Test==============");
         System.out.println("firstLocation = " + firstLocation);
         System.out.println("requestList = " + requestList);
@@ -47,8 +51,10 @@ public class SSTF extends AbstractService {
     public void SSTFTest() {
         RequestMaker maker = new RequestMaker();
         maker.setRequestNum(400);
+
         setRequestList(maker.getRandomRequestList());
         setFirstLocation(900);
+        setTrackNum(1500);
         run();
         System.out.println("=============Test finished==============");
     }

@@ -23,7 +23,10 @@ public class RequestMaker {
 
     }
 
-
+    /**
+     * 返回一个乱序、随机的请求序列 {@link ArrayList<Integer>}
+     * 其中50%位于 0～499，25%分布在 500～999，25%分布在 1000～1499。
+     */
     public ArrayList<Integer> getRandomRequestList() {
         if (requestNum == 0) {
             System.out.println("未设置请求序列的个数。");

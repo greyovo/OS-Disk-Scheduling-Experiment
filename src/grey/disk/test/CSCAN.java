@@ -4,7 +4,7 @@ package grey.disk.test;
 import grey.disk.util.RequestMaker;
 import org.junit.Test;
 
-public class CSCAN extends AbstractService {
+public class CSCAN extends AbstractSolution {
 
     public static final int POSITIVE_DIRECTION = 0; //按增大的方向
     public static final int NEGATIVE_DIRECTION = 1; //按减小的方向
@@ -21,7 +21,10 @@ public class CSCAN extends AbstractService {
 
     @Override
     public void run() {
-
+        if (!isAllInitialized()) {
+            System.out.println("初始位置或最大磁道数未指定！");
+            return;
+        }
         System.out.println("=============C-SCAN Test==============");
         System.out.println("firstLocation = " + firstLocation);
         System.out.println("requestList = " + requestList);
@@ -64,9 +67,8 @@ public class CSCAN extends AbstractService {
                 curLocation--;
             }
 
-
         } else {
-            System.out.println("未指定方向或方向错误");
+            System.out.println("未指定方向或方向错误！");
         }
 
         System.out.println("SCAN average distance = " + distance / resultList.size());
@@ -78,8 +80,10 @@ public class CSCAN extends AbstractService {
     public void CSCANTest() {
         RequestMaker maker = new RequestMaker();
         maker.setRequestNum(400);
+
         setRequestList(maker.getRandomRequestList());
         setFirstLocation(555);
+        setTrackNum(1500);
         setDirection(SCAN.POSITIVE_DIRECTION);
         run();
         System.out.println("=============Test finished==============");

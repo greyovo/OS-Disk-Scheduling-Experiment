@@ -3,12 +3,10 @@ package grey.disk.test;
 import grey.disk.util.RequestMaker;
 import org.junit.Test;
 
-import java.util.Comparator;
-
 /**
  * 又称电梯算法
  */
-public class SCAN extends AbstractService {
+public class SCAN extends AbstractSolution {
 
     public static final int POSITIVE_DIRECTION = 0; //按增大的方向
     public static final int NEGATIVE_DIRECTION = 1; //按减小的方向
@@ -24,6 +22,10 @@ public class SCAN extends AbstractService {
 
     @Override
     public void run() {
+        if (!isAllInitialized()) {
+            System.out.println("初始位置或最大磁道数未指定！");
+            return;
+        }
         System.out.println("=============SCAN Test==============");
         System.out.println("firstLocation = " + firstLocation);
         System.out.println("requestList = " + requestList);
@@ -100,25 +102,6 @@ public class SCAN extends AbstractService {
         System.out.println("SCAN average distance = " + distance / resultList.size());
         System.out.println("resultList = " + resultList);
 
-
-//        requestList.sort(new Comparator<Integer>() {
-//            @Override
-//            public int compare(Integer o1, Integer o2) {
-//                return o1.compareTo(o2);
-//            }
-//        });
-
-//        //找出距离当前磁道号最近的请求及其在列表中的下标
-//        for (int i = 0; i < requestList.size(); i++) {
-//            if (Math.abs(requestList.get(i) - curLocation) < minDistance) {
-//                minDistance = Math.abs(requestList.get(i) - curLocation);
-//                nextLocation = requestList.get(i);
-//                curIndex = i;
-//            }
-//        }
-//        resultList.add(curLocation);
-//        curLocation = nextLocation;
-
     }
 
 
@@ -126,8 +109,10 @@ public class SCAN extends AbstractService {
     public void SCANTest() {
         RequestMaker maker = new RequestMaker();
         maker.setRequestNum(400);
+
         setRequestList(maker.getRandomRequestList());
         setFirstLocation(555);
+        setTrackNum(1500);
         setDirection(SCAN.POSITIVE_DIRECTION);
         run();
         System.out.println("=============Test finished==============");

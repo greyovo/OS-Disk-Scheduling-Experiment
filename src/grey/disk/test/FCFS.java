@@ -5,13 +5,18 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class FCFS extends AbstractService {
+public class FCFS extends AbstractSolution {
 
     public FCFS() {
     }
 
     @Override
     public void run() {
+        if (!isAllInitialized()) {
+            System.out.println("初始位置或最大磁道数未指定！");
+            return;
+        }
+
         System.out.println("=============FCFS Test==============");
         System.out.println("firstLocation = " + firstLocation);
         System.out.println("requestList = " + requestList);
@@ -31,7 +36,10 @@ public class FCFS extends AbstractService {
     public void FCFSTest(){
         RequestMaker maker = new RequestMaker();
         maker.setRequestNum(400);
+
         setRequestList(maker.getRandomRequestList());
+        setTrackNum(1500);
+        setFirstLocation(0);
         run();
         System.out.println("=============Test finished==============");
     }
