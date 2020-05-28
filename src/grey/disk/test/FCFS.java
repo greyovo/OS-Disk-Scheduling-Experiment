@@ -18,7 +18,8 @@ public class FCFS extends BaseMethod {
             resultList.add(i);
             distance += Math.abs(i - requestList.get(requestList.size() - 1));
         }
-        System.out.println("average distance = " + distance / requestList.size());
+        System.out.println("FCFS average distance = " + distance / requestList.size());
+        System.out.println("resultList = " + resultList);
     }
 
     @Test
