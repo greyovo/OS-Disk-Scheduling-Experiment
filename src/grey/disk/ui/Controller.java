@@ -40,7 +40,7 @@ public class Controller implements Initializable {
     XYChart.Series<Number, Number> cscanSeries = new XYChart.Series<>();
 
     private RequestMaker maker = new RequestMaker();
-    private ArrayList<Integer> requestList = null;
+    private ArrayList<Integer> requestList;
     private int firstLoc = -1;
     private int trackNum = -1;
 
@@ -134,6 +134,7 @@ public class Controller implements Initializable {
         //FCFS
         FCFS fcfs = new FCFS(firstLoc, trackNum, requestList);
         ArrayList<Integer> result = fcfs.run();
+        fcfsSeries = new XYChart.Series<>();
         fcfsSeries.setName("FCFS");
         for (int i = 0; i < result.size(); i++) {
             fcfsSeries.getData().add(new XYChart.Data<>(i + 1, result.get(i)));
@@ -160,6 +161,7 @@ public class Controller implements Initializable {
         //SSTF
         SSTF sstf = new SSTF(firstLoc, trackNum, requestList);
         ArrayList<Integer> result = sstf.run();
+        sstfSeries = new XYChart.Series<>();
         sstfSeries.setName("SSTF");
         for (int i = 0; i < result.size(); i++) {
             sstfSeries.getData().add(new XYChart.Data<>(i + 1, result.get(i)));
@@ -190,7 +192,7 @@ public class Controller implements Initializable {
         scanSeries = new XYChart.Series<>();
         scanSeries.setName("SCAN");
         for (int i = 0; i < result.size(); i++) {
-            sstfSeries.getData().add(new XYChart.Data<>(i + 1, result.get(i)));
+            scanSeries.getData().add(new XYChart.Data<>(i + 1, result.get(i)));
         }
     }
 
@@ -198,8 +200,13 @@ public class Controller implements Initializable {
     public void drawCSCAN() {
         if (!checkCorrect())
             return;
+
+        makeCscanSeries();
+        lineChart = new LineChart<Number, Number>(xAxis, yAxis);
+        initLineChart();
         lineChart.getData().clear();
-        lineChart.getData().add(getCscanSeries());
+        lineChart.getData().add(scanSeries);
+
         try {
             new ChartView("CSCAN", lineChart).start(new Stage());
         } catch (Exception e) {
@@ -207,16 +214,16 @@ public class Controller implements Initializable {
         }
     }
 
-    public XYChart.Series<Number, Number> getCscanSeries() {
+    public void makeCscanSeries() {
         //SCAN
-        CSCAN cscan = new CSCAN(firstLoc, trackNum, requestList, SCAN.POSITIVE_DIRECTION);
+        CSCAN cscan = new CSCAN(firstLoc, trackNum, requestList, CSCAN.POSITIVE_DIRECTION);
         ArrayList<Integer> result = cscan.run();
         System.out.println(result);
-        sstfSeries.setName("CSCAN");
+        cscanSeries = new XYChart.Series<>();
+        cscanSeries.setName("CSCAN");
         for (int i = 0; i < result.size(); i++) {
             cscanSeries.getData().add(new XYChart.Data<>(i + 1, result.get(i)));
         }
-        return cscanSeries;
     }
 
     @FXML
