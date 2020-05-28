@@ -7,7 +7,7 @@ public abstract class AbstractService {
     protected ArrayList<Integer> requestList;   //磁道号请求序列
     protected ArrayList<Integer> resultList = new ArrayList<>();    //处理结果序列
     protected int firstLocation = 0;            //初始磁道号
-    protected double distance = 100;              //跨越的磁道数
+    protected double distance = 100;            //跨越的磁道数
     protected int trackNum = 1500;              //最大磁道号（总磁道数）
 
     public void run() {

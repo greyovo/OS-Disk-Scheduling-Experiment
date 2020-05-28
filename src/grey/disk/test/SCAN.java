@@ -128,8 +128,9 @@ public class SCAN extends AbstractService {
         maker.setRequestNum(400);
         setRequestList(maker.getRandomRequestList());
         setFirstLocation(555);
-        setDirection(POSITIVE_DIRECTION);
+        setDirection(SCAN.POSITIVE_DIRECTION);
         run();
+        System.out.println("=============Test finished==============");
     }
 
 

@@ -50,6 +50,7 @@ public class SSTF extends AbstractService {
         setRequestList(maker.getRandomRequestList());
         setFirstLocation(900);
         run();
+        System.out.println("=============Test finished==============");
     }
 
 }

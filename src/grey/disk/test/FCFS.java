@@ -33,6 +33,7 @@ public class FCFS extends AbstractService {
         maker.setRequestNum(400);
         setRequestList(maker.getRandomRequestList());
         run();
+        System.out.println("=============Test finished==============");
     }
 
 }
