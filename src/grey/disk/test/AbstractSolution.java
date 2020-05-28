@@ -10,6 +10,10 @@ public abstract class AbstractSolution {
     protected double distance = 0;            //跨越的磁道数
     protected int trackNum = -1;              //最大磁道号（总磁道数）
 
+    public AbstractSolution() {
+
+    }
+
     /**
      * 检查是否完成数据初始化
      */
@@ -17,8 +21,7 @@ public abstract class AbstractSolution {
         return trackNum != -1 && firstLocation != -1;
     }
 
-    public void run() {
-    }
+    public abstract ArrayList<Integer> run();
 
     public void setRequestList(ArrayList<Integer> requestList) {
         this.requestList = requestList;

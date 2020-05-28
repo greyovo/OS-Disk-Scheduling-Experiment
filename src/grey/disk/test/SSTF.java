@@ -3,18 +3,21 @@ package grey.disk.test;
 import grey.disk.util.RequestMaker;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 public class SSTF extends AbstractSolution {
 
-
-    public SSTF() {
-
+    public SSTF(int firstLoc, int trackNum, ArrayList<Integer> list) {
+        this.firstLocation = firstLoc;
+        this.trackNum = trackNum;
+        this.requestList = list;
     }
 
     @Override
-    public void run() {
+    public ArrayList<Integer> run() {
         if (!isAllInitialized()) {
             System.out.println("初始位置或最大磁道数未指定！");
-            return;
+            return null;
         }
         System.out.println("=============SSTF Test==============");
         System.out.println("firstLocation = " + firstLocation);
@@ -45,6 +48,7 @@ public class SSTF extends AbstractSolution {
         System.out.println("SSTF average distance = " + distance / resultList.size());
         System.out.println("resultList = " + resultList);
 
+        return resultList;
     }
 
     @Test
@@ -56,6 +60,7 @@ public class SSTF extends AbstractSolution {
         setFirstLocation(900);
         setTrackNum(1500);
         run();
+
         System.out.println("=============Test finished==============");
     }
 

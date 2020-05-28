@@ -3,6 +3,107 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="grey.disk.ui.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane fx:controller="grey.disk.ui.Controller" xmlns:fx="http://javafx.com/fxml">
+
+    <ScrollPane fitToHeight="true" fitToWidth="true"
+                AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0"
+                AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+
+
+        <GridPane fx:id="gridPane" hgap="22" vgap="22" gridLinesVisible="false" style="-fx-padding:33">
+
+            <!--标题-->
+            <Text text="磁盘调度实验测试" style="-fx-font-size:33">
+                <GridPane.rowIndex>0</GridPane.rowIndex>
+                <GridPane.columnIndex>1</GridPane.columnIndex>
+                <GridPane.columnSpan>3</GridPane.columnSpan>
+            </Text>
+
+
+            <Text text="请输入测试条件：" style="-fx-font-size:22">
+                <GridPane.rowIndex>2</GridPane.rowIndex>
+                <GridPane.columnIndex>1</GridPane.columnIndex>
+                <GridPane.columnSpan>5</GridPane.columnSpan>
+            </Text>
+            <Text text="磁头初始位置">
+                <GridPane.rowIndex>3</GridPane.rowIndex>
+                <GridPane.columnIndex>1</GridPane.columnIndex>
+            </Text>
+            <TextField prefWidth="100" fx:id="firstLocField">
+                <GridPane.rowIndex>3</GridPane.rowIndex>
+                <GridPane.columnIndex>2</GridPane.columnIndex>
+            </TextField>
+
+            <Text text="请求序列长度">
+                <GridPane.rowIndex>3</GridPane.rowIndex>
+                <GridPane.columnIndex>3</GridPane.columnIndex>
+            </Text>
+            <TextField prefWidth="100" fx:id="requestNumField">
+                <GridPane.rowIndex>3</GridPane.rowIndex>
+                <GridPane.columnIndex>4</GridPane.columnIndex>
+            </TextField>
+
+            <Text text="最大磁道数">
+                <GridPane.rowIndex>3</GridPane.rowIndex>
+                <GridPane.columnIndex>5</GridPane.columnIndex>
+            </Text>
+            <TextField prefWidth="100" fx:id="maxTrackNumField" text="1500" editable="false">
+                <GridPane.rowIndex>3</GridPane.rowIndex>
+                <GridPane.columnIndex>6</GridPane.columnIndex>
+            </TextField>
+
+
+            <!--    <Button fx:id="clearButton" onAction="#clear" text="清空输入">-->
+            <!--        <GridPane.rowIndex>1</GridPane.rowIndex>-->
+            <!--        <GridPane.columnIndex>9</GridPane.columnIndex>-->
+            <!--    </Button>-->
+
+            <!--按钮-->
+            <HBox spacing="11">
+                <GridPane.rowIndex>4</GridPane.rowIndex>
+                <GridPane.columnIndex>1</GridPane.columnIndex>
+                <GridPane.columnSpan>8</GridPane.columnSpan>
+                <Button fx:id="generateButton" onAction="#generateRequest" text="生成随机序列"/>
+                <Button onAction="#drawFCFS" text="FCFS"/>
+                <!--TODO 余下三种情况及其按钮-->
+<!--                <Button fx:id="generateAndStartButton" onAction="#generateAndStart" text="生成并立即开始"/>-->
+            </HBox>
+
+            <!--序列展示-->
+            <Text text="生成的随机序列：" style="-fx-font-size:22">
+                <GridPane.rowIndex>5</GridPane.rowIndex>
+                <GridPane.columnIndex>1</GridPane.columnIndex>
+                <GridPane.columnSpan>5</GridPane.columnSpan>
+            </Text>
+            <TextArea fx:id="infoText" prefWidth="500" prefHeight="50" wrapText="true" editable="false">
+                <GridPane.rowIndex>6</GridPane.rowIndex>
+                <GridPane.columnIndex>1</GridPane.columnIndex>
+                <GridPane.columnSpan>10</GridPane.columnSpan>
+                <GridPane.rowSpan>1</GridPane.rowSpan>
+            </TextArea>
+
+            <!--结果可视化面板区域，可滚动-->
+            <ScrollPane fx:id="scrollPane" prefWidth="800" prefHeight="800">
+                <GridPane.rowIndex>7</GridPane.rowIndex>
+                <GridPane.columnIndex>1</GridPane.columnIndex>
+                <GridPane.columnSpan>10</GridPane.columnSpan>
+                <GridPane.rowSpan>4</GridPane.rowSpan>
+                <HBox fx:id="chartBox">
+
+                </HBox>
+
+            </ScrollPane>
+
+
+        </GridPane>
+
+    </ScrollPane>
+
+</AnchorPane>

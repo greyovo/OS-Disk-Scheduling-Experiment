@@ -3,6 +3,8 @@ package grey.disk.test;
 import grey.disk.util.RequestMaker;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 /**
  * 又称电梯算法
  */
@@ -16,15 +18,22 @@ public class SCAN extends AbstractSolution {
 
     }
 
+    public SCAN(int firstLoc, int trackNum, int direction, ArrayList<Integer> list) {
+        this.firstLocation = firstLoc;
+        this.trackNum = trackNum;
+        this.direction = direction;
+        this.requestList = list;
+    }
+
     public void setDirection(int direction) {
         this.direction = direction;
     }
 
     @Override
-    public void run() {
+    public ArrayList<Integer> run() {
         if (!isAllInitialized()) {
             System.out.println("初始位置或最大磁道数未指定！");
-            return;
+            return null;
         }
         System.out.println("=============SCAN Test==============");
         System.out.println("firstLocation = " + firstLocation);
@@ -102,6 +111,8 @@ public class SCAN extends AbstractSolution {
         System.out.println("SCAN average distance = " + distance / resultList.size());
         System.out.println("resultList = " + resultList);
 
+        return resultList;
+
     }
 
 
@@ -115,6 +126,7 @@ public class SCAN extends AbstractSolution {
         setTrackNum(1500);
         setDirection(SCAN.POSITIVE_DIRECTION);
         run();
+
         System.out.println("=============Test finished==============");
     }
 
