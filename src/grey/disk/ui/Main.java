@@ -8,12 +8,19 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    Parent root;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/grey/sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        root = FXMLLoader.load(getClass().getResource("/grey/main.fxml"));
+        initChart();
+        primaryStage.setTitle("磁盘调度算法实验");
+        primaryStage.setScene(new Scene(root, 800, 800));
         primaryStage.show();
+    }
+
+    private void initChart(){
+        // TODO: 2020/5/28 设置折线图
     }
 
 

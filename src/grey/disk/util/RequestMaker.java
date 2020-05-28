@@ -1,6 +1,5 @@
 package grey.disk.util;
 
-
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -27,43 +26,64 @@ public class RequestMaker {
 //    }
 
     public ArrayList<Integer> getRandomRequest() {
-        ArrayList<Integer> requestList = new ArrayList<>();
+        if (requestNum == 0) {
+            System.out.println("未设置请求序列的个数。");
+            return null;
+        }
 
+        ArrayList<Integer> requestList = new ArrayList<>();
         int i = 0;
         Iterator<Integer> it;
 
         //50%位于0~499
         set.clear();
-        randomsToSet(0, 499, (int) (requestNum * 0.5));
+        while (set.size() < requestNum * 0.5)
+            randomsToSet(0, 499, (int) (requestNum * 0.5) - set.size());
         it = set.iterator();
         while (it.hasNext()) {
             requestList.add(it.next());
             i++;
         }
+        System.out.println(set);
         System.out.println("已经生成" + i + "个序列");
 
         //25%位于500~999
         set.clear();
-        randomsToSet(500, 999, (int) (requestNum * 0.25));
+        while (set.size() < requestNum * 0.25)
+            randomsToSet(500, 999, (int) (requestNum * 0.25) - set.size());
         it = set.iterator();
         while (it.hasNext()) {
             requestList.add(it.next());
             i++;
         }
+        System.out.println(set);
         System.out.println("已经生成" + i + "个序列");
 
         //25%位于1000~1499
         set.clear();
-        randomsToSet(1000, 1499, (int) (requestNum * 0.25));
+        while (set.size() < requestNum * 0.25)
+            randomsToSet(1000, 1499, (int) (requestNum * 0.25) - set.size());
         it = set.iterator();
         while (it.hasNext()) {
             requestList.add(it.next());
             i++;
         }
+        System.out.println(set);
         System.out.println("已经生成" + i + "个序列");
 
         //打乱顺序
+        int j, k, temp;
+        for (int l = 0; l < requestList.size() * 2; l++) {
+            j = (int) (random.nextDouble() * requestList.size());
+            k = (int) (random.nextDouble() * requestList.size());
+            temp = requestList.get(j);
+            requestList.set(j, requestList.get(k));
+            requestList.set(k, temp);
+        }
 
+        //最终乱序的结果
+        System.out.println("\n乱序的随机请求序列：");
+        System.out.println(requestList);
 
         return requestList;
     }
@@ -77,29 +97,20 @@ public class RequestMaker {
      * @param num 位于min和max之间的个数
      */
     public void randomsToSet(int min, int max, int num) {
-
-//        if (min > max || (max - min) < num)
-//            return;
-
         for (int i = 0; i < num; i++) {
-            int temp = (int) (random.nextDouble() * (max - min+1))+min;
+            int temp = (int) (random.nextDouble() * (max - min + 1)) + min;
             set.add(temp);
         }
-
-        int size = set.size();
-        System.out.println("ss: "+set.size());
-        if (size < requestNum)
-            randomsToSet(min, max, requestNum - size);
     }
 
+    public void setRequestNum(int requestNum) {
+        this.requestNum = requestNum;
+    }
 
     @Test
     public void test() {
-        requestNum = 400;
-//        getRandomRequest();
-        randomsToSet(0, 499, requestNum);
-        System.out.println(set);
-        System.out.println(set.size());
+        setRequestNum(400);
+        getRandomRequest();
     }
 
 
