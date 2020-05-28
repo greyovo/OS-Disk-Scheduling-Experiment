@@ -8,7 +8,7 @@ public abstract class AbstractSolution {
     protected ArrayList<Integer> resultList = new ArrayList<>();    //处理结果序列
     protected int firstLocation = -1;            //初始磁道号
     protected double distance = 0;            //跨越的磁道数
-    protected int trackNum = -1;              //最大磁道号（总磁道数）
+    protected int trackNum = 1500;              //最大磁道号（总磁道数）
 
     public AbstractSolution() {
 

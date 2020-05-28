@@ -18,7 +18,7 @@ public class SCAN extends AbstractSolution {
 
     }
 
-    public SCAN(int firstLoc, int trackNum, int direction, ArrayList<Integer> list) {
+    public SCAN(int firstLoc, int trackNum, ArrayList<Integer> list, int direction) {
         this.firstLocation = firstLoc;
         this.trackNum = trackNum;
         this.direction = direction;
@@ -32,7 +32,11 @@ public class SCAN extends AbstractSolution {
     @Override
     public ArrayList<Integer> run() {
         if (!isAllInitialized()) {
-            System.out.println("初始位置或最大磁道数未指定！");
+            System.err.println("初始位置或最大磁道数未指定");
+            return null;
+        }
+        if (direction == -1){
+            System.err.println("方向未指定");
             return null;
         }
         System.out.println("=============SCAN Test==============");
@@ -112,8 +116,8 @@ public class SCAN extends AbstractSolution {
         System.out.println("resultList = " + resultList);
 
         return resultList;
-
     }
+
 
 
     @Test

@@ -17,7 +17,7 @@ public class CSCAN extends AbstractSolution {
 
     }
 
-    public CSCAN(int firstLoc, int trackNum, int direction, ArrayList<Integer> list) {
+    public CSCAN(int firstLoc, int trackNum, ArrayList<Integer> list, int direction) {
         this.firstLocation = firstLoc;
         this.trackNum = trackNum;
         this.direction = direction;
@@ -32,6 +32,10 @@ public class CSCAN extends AbstractSolution {
     public ArrayList<Integer> run() {
         if (!isAllInitialized()) {
             System.out.println("初始位置或最大磁道数未指定！");
+            return null;
+        }
+        if (direction == -1){
+            System.err.println("方向未指定");
             return null;
         }
         System.out.println("=============C-SCAN Test==============");

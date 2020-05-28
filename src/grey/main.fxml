@@ -20,10 +20,10 @@
         <GridPane fx:id="gridPane" hgap="22" vgap="22" gridLinesVisible="false" style="-fx-padding:33">
 
             <!--标题-->
-            <Text text="磁盘调度实验测试" style="-fx-font-size:33">
+            <Text text="磁盘调度算法模拟实验测试" style="-fx-font-size:33">
                 <GridPane.rowIndex>0</GridPane.rowIndex>
                 <GridPane.columnIndex>1</GridPane.columnIndex>
-                <GridPane.columnSpan>3</GridPane.columnSpan>
+                <GridPane.columnSpan>4</GridPane.columnSpan>
             </Text>
 
 
@@ -72,6 +72,11 @@
                 <GridPane.columnSpan>8</GridPane.columnSpan>
                 <Button fx:id="generateButton" onAction="#generateRequest" text="生成随机序列"/>
                 <Button onAction="#drawFCFS" text="FCFS"/>
+                <Button onAction="#drawSSTF" text="SSTF"/>
+                <Button onAction="#drawSCAN" text="SCAN"/>
+                <Button onAction="#drawCSCAN" text="CSCAN"/>
+                <Button onAction="#drawAll" text="我全都要"/>
+
                 <!--TODO 余下三种情况及其按钮-->
 <!--                <Button fx:id="generateAndStartButton" onAction="#generateAndStart" text="生成并立即开始"/>-->
             </HBox>
