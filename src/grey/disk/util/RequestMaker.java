@@ -16,6 +16,7 @@ public class RequestMaker {
     private HashSet<Integer> set = new HashSet<>();
     private int requestNum = 0;
     private int trackNum = 1500;
+    public ArrayList<Integer> requestList = new ArrayList<>();
 
     private Random random = new Random();
 
@@ -27,13 +28,14 @@ public class RequestMaker {
      * 返回一个乱序、随机的请求序列 {@link ArrayList<Integer>}
      * 其中50%位于 0～499，25%分布在 500～999，25%分布在 1000～1499。
      */
-    public ArrayList<Integer> getRandomRequestList() {
+    public void remakeRandomList() {
         if (requestNum == 0) {
-            System.out.println("未设置请求序列的个数。");
-            return null;
+            System.err.println("未设置请求序列的个数。");
+            return;
         }
 
-        ArrayList<Integer> requestList = new ArrayList<>();
+        requestList = new ArrayList<>();
+
         int i = 0;
         Iterator<Integer> it;
 
@@ -84,11 +86,9 @@ public class RequestMaker {
         }
 
         //最终乱序的结果
-        System.out.println("\n乱序的随机请求序列：");
+        System.out.println("乱序的随机请求序列：");
         System.out.println(requestList);
         System.out.println("\n===============随机序列生成完毕==============\n");
-
-        return requestList;
     }
 
 
@@ -118,10 +118,14 @@ public class RequestMaker {
         return trackNum;
     }
 
+    public ArrayList<Integer> getRequestList() {
+        return requestList;
+    }
+
     @Test
     public void test() {
         setRequestNum(400);
-        getRandomRequestList();
+        remakeRandomList();
     }
 
 

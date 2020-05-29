@@ -17,6 +17,11 @@ public class ChartView extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        lineChart.setPrefWidth(1600);
+        lineChart.setPrefHeight(1000);
+        lineChart.setCreateSymbols(false);
+
         stage.setTitle(title);
         Pane pane = new Pane(lineChart);
         Scene scene = new Scene(pane, 1600, 1000);

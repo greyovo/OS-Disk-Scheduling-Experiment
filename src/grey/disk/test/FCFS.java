@@ -14,7 +14,7 @@ public class FCFS extends AbstractSolution {
     }
 
     @Override
-    public ArrayList<Integer> run() {
+    public ArrayList<Integer> getResultList() {
         if (!isAllInitialized()) {
             System.out.println("初始位置或最大磁道数未指定！");
             return null;
@@ -27,26 +27,22 @@ public class FCFS extends AbstractSolution {
 
         resultList = new ArrayList<>();
         resultList.add(firstLocation);
-        for (Integer i : requestList) {
-            resultList.add(i);
+//        for (Integer i : requestList) {
+//            resultList.add(i);
+//            distance += Math.abs(i - requestList.get(requestList.size() - 1));
+//        }
+
+        for (int i = 0; i < requestList.size(); i++) {
+            resultList.add(requestList.get(i));
             distance += Math.abs(i - requestList.get(requestList.size() - 1));
         }
+
         System.out.println("FCFS average distance = " + distance / requestList.size());
         System.out.println("resultList = " + resultList);
+        System.out.println("=============Test Finished==============");
+
+
         return resultList;
-    }
-
-    @Test
-    public void FCFSTest() {
-        RequestMaker maker = new RequestMaker();
-        maker.setRequestNum(400);
-
-        setRequestList(maker.getRandomRequestList());
-        setTrackNum(1500);
-        setFirstLocation(0);
-        run();
-
-        System.out.println("=============Test finished==============");
     }
 
 }

@@ -21,7 +21,7 @@ public abstract class AbstractSolution {
         return trackNum != -1 && firstLocation != -1;
     }
 
-    public abstract ArrayList<Integer> run();
+    public abstract ArrayList<Integer> getResultList();
 
     public void setRequestList(ArrayList<Integer> requestList) {
         this.requestList = requestList;
@@ -33,10 +33,6 @@ public abstract class AbstractSolution {
 
     public void setTrackNum(int trackNum) {
         this.trackNum = trackNum;
-    }
-
-    public ArrayList<Integer> getResultList() {
-        return resultList;
     }
 
     public double getDistance() {

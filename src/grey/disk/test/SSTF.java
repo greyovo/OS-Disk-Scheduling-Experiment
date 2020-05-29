@@ -14,11 +14,12 @@ public class SSTF extends AbstractSolution {
     }
 
     @Override
-    public ArrayList<Integer> run() {
+    public ArrayList<Integer> getResultList() {
         if (!isAllInitialized()) {
             System.out.println("初始位置或最大磁道数未指定！");
             return null;
         }
+
         System.out.println("=============SSTF Test==============");
         System.out.println("firstLocation = " + firstLocation);
         System.out.println("requestList = " + requestList);
@@ -28,6 +29,7 @@ public class SSTF extends AbstractSolution {
         int curLocation = firstLocation;
         int nextLocation = 0;
         int curIndex = 0;
+
         while (!requestList.isEmpty()) {
             //找出距离当前磁道号最近的请求及其在列表中的下标
             for (int i = 0; i < requestList.size(); i++) {
@@ -41,27 +43,15 @@ public class SSTF extends AbstractSolution {
             curLocation = nextLocation;
             resultList.add(curLocation);
 
-            requestList.remove(curIndex);           //移除 已寻道的请求
+            requestList.remove(curIndex);           //移除  已寻道的请求
             minDistance = Integer.MAX_VALUE;        //距离初始化为最大值
         }
 
         System.out.println("SSTF average distance = " + distance / resultList.size());
         System.out.println("resultList = " + resultList);
+        System.out.println("=============Test Finished==============");
 
         return resultList;
-    }
-
-    @Test
-    public void SSTFTest() {
-        RequestMaker maker = new RequestMaker();
-        maker.setRequestNum(400);
-
-        setRequestList(maker.getRandomRequestList());
-        setFirstLocation(900);
-        setTrackNum(1500);
-        run();
-
-        System.out.println("=============Test finished==============");
     }
 
 }

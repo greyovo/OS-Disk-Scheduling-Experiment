@@ -30,7 +30,7 @@ public class SCAN extends AbstractSolution {
     }
 
     @Override
-    public ArrayList<Integer> run() {
+    public ArrayList<Integer> getResultList() {
         if (!isAllInitialized()) {
             System.err.println("初始位置或最大磁道数未指定");
             return null;
@@ -114,24 +114,9 @@ public class SCAN extends AbstractSolution {
 
         System.out.println("SCAN average distance = " + distance / resultList.size());
         System.out.println("resultList = " + resultList);
+        System.out.println("=============Test Finished==============");
 
         return resultList;
-    }
-
-
-
-    @Test
-    public void SCANTest() {
-        RequestMaker maker = new RequestMaker();
-        maker.setRequestNum(400);
-
-        setRequestList(maker.getRandomRequestList());
-        setFirstLocation(555);
-        setTrackNum(1500);
-        setDirection(SCAN.POSITIVE_DIRECTION);
-        run();
-
-        System.out.println("=============Test finished==============");
     }
 
 
