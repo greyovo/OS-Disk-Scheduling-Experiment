@@ -70,7 +70,7 @@ public class Controller implements Initializable {
         try {
             requestNum = Integer.parseInt(requestNumField.getText());
         } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "序列长度有误，请输入数字");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "序列长度有误，请输入整数");
             alert.show();
             return;
         }
@@ -97,7 +97,7 @@ public class Controller implements Initializable {
         try {
             firstLoc = Integer.parseInt(firstLocField.getText());
         } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "磁道号有误，请输入数字");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "磁道号有误，请输入整数");
             alert.show();
             return false;
         }
@@ -118,9 +118,9 @@ public class Controller implements Initializable {
     @FXML
     public void clear() {
         requestInfo.setText("");
-        request.clear();
         firstLocField.setText("");
         requestNumField.setText("");
+        request.clear();
 //        maxTrackNumField.setText("");
     }
 
@@ -190,7 +190,6 @@ public class Controller implements Initializable {
 
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
         SCAN scan = new SCAN(firstLoc, trackNum, maker.requestList, SCAN.POSITIVE_DIRECTION);
-
         ArrayList<Integer> result = scan.getResultList();
         lineChart.getData().add(getSeries("SCAN", result));
         String info = String.format("平均磁头移动道数:%.2f", scan.getDistance() / result.size());

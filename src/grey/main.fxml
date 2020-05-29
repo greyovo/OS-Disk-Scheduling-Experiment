@@ -13,8 +13,8 @@
 <AnchorPane fx:controller="grey.disk.ui.Controller" xmlns:fx="http://javafx.com/fxml">
 
     <ScrollPane fitToHeight="true" fitToWidth="true"
-                AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0"
-                AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
 
         <GridPane fx:id="gridPane" hgap="22" vgap="22" gridLinesVisible="false"
@@ -115,7 +115,7 @@
                 <GridPane.rowIndex>11</GridPane.rowIndex>
                 <GridPane.columnIndex>1</GridPane.columnIndex>
                 <GridPane.columnSpan>10</GridPane.columnSpan>
-                <GridPane.rowSpan>5</GridPane.rowSpan>
+                <GridPane.rowSpan>10</GridPane.rowSpan>
             </Label>
 
         </GridPane>
