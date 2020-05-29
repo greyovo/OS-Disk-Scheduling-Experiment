@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         root = FXMLLoader.load(getClass().getResource("/grey/main.fxml"));
         primaryStage.setTitle("磁盘调度算法模拟实验");
-        primaryStage.setScene(new Scene(root, 1000, 800));
+        primaryStage.setScene(new Scene(root, 1000, 880));
         primaryStage.show();
     }
 
