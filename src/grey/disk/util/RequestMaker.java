@@ -48,8 +48,8 @@ public class RequestMaker {
             requestList.add(it.next());
             i++;
         }
-//        System.out.println(set);
-//        System.out.println("已经生成" + i + "个请求");
+        System.out.println(set);
+        System.out.println("已经生成" + i + "个请求");
 
         //25%位于500~999
         set.clear();
@@ -60,8 +60,8 @@ public class RequestMaker {
             requestList.add(it.next());
             i++;
         }
-//        System.out.println(set);
-//        System.out.println("已经生成" + i + "个请求");
+        System.out.println(set);
+        System.out.println("已经生成" + i + "个请求");
 
         //25%位于1000~1499
         set.clear();
@@ -72,8 +72,8 @@ public class RequestMaker {
             requestList.add(it.next());
             i++;
         }
-//        System.out.println(set);
-//        System.out.println("已经生成" + i + "个请求");
+        System.out.println(set);
+        System.out.println("已经生成" + i + "个请求");
 
         //打乱顺序
         int j, k, temp;

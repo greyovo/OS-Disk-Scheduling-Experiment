@@ -50,7 +50,7 @@ public class Controller implements Initializable {
         xAxis.setLabel("访问时间");
         yAxis.setLabel("磁道号");
 
-        statement.setText("· 请输入初始磁道号（0~1500）和请求序列的长度（不小于400）\n" +
+        statement.setText("· 请输入初始磁道号（0~1500）和请求序列的长度（100~1000之间且需为4的倍数）\n" +
                 "· 最大磁道数已设定为1500\n" +
                 "· 先点击生成请求序列，然后再点击所需测试的算法生成折线图\n" +
                 "\n" +
@@ -74,8 +74,13 @@ public class Controller implements Initializable {
             alert.show();
             return;
         }
-        if (requestNum < 400) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "序列长度过小");
+        if (requestNum < 100 || requestNum > 1000) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "序列长度不在规定范围(100~1000)");
+            alert.show();
+            return;
+        }
+        if (requestNum % 4 != 0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "序列长度不是4的倍数");
             alert.show();
             return;
         }
