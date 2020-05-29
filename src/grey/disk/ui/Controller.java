@@ -11,6 +11,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -19,17 +20,18 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
 
     public GridPane gridPane;
     public TextField firstLocField;
     public TextField requestNumField;
     public TextField maxTrackNumField;
     public HBox chartBox;
-    public TextArea infoText;
+    public TextArea requestInfo;
+    @FXML
+    public Label statement;
 
     NumberAxis xAxis = new NumberAxis();
     NumberAxis yAxis = new NumberAxis();
@@ -40,21 +42,26 @@ public class Controller {
     private int firstLoc = -1;
     private int trackNum = -1;
 
-//    @Override
-//    public void initialize(URL location, ResourceBundle resources) {
-//        maker = new RequestMaker();
-//        request = new ArrayList<>();
-//
-//        xAxis.setLabel("访问时间");
-//        yAxis.setLabel("磁道号");
-//    }
-
-    public Controller() {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         maker = new RequestMaker();
         request = new ArrayList<>();
 
         xAxis.setLabel("访问时间");
         yAxis.setLabel("磁道号");
+
+        statement.setText("· 请输入初始磁道号（0~1500）和请求序列的长度（不小于400）\n" +
+                "· 最大磁道数已设定为1500\n" +
+                "· 先点击生成请求序列，然后再点击所需测试的算法生成折线图\n" +
+                "\n" +
+                "· FCFS：先来先服务算法\n" +
+                "· SSTF：最短服务时间算法\n" +
+                "· SCAN：扫描算法又称电梯LOOK算法\n" +
+                "· CSCAN：循环扫描算法\n");
+    }
+
+    public Controller() {
+
     }
 
     @FXML
@@ -80,7 +87,7 @@ public class Controller {
 
     @FXML
     public boolean allPrepared() {
-        System.out.println("\nRequestMaker.requestList = " + maker.requestList+"\n");
+        System.out.println("\nRequestMaker.requestList = " + maker.requestList + "\n");
 
         try {
             firstLoc = Integer.parseInt(firstLocField.getText());
@@ -105,7 +112,7 @@ public class Controller {
 
     @FXML
     public void clear() {
-        infoText.setText("");
+        requestInfo.setText("");
         request.clear();
         firstLocField.setText("");
         requestNumField.setText("");
@@ -113,7 +120,7 @@ public class Controller {
     }
 
     private void updateRequestList(ArrayList<Integer> list) {
-        infoText.setText(list.toString());
+        requestInfo.setText(list.toString());
         request = list;
         request.trimToSize();
 //        requestArray = (Integer[]) list.toArray();
@@ -142,8 +149,9 @@ public class Controller {
 
         ArrayList<Integer> result = fcfs.getResultList();
         lineChart.getData().add(getSeries("FCFS", result));
+        String info = String.format("平均寻道长度:%.2f", fcfs.getDistance() / result.size());
         try {
-            new ChartView("FCFS", lineChart).start(new Stage());
+            new ChartView("FCFS", lineChart, info).start(new Stage());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -160,8 +168,9 @@ public class Controller {
 
         ArrayList<Integer> result = sstf.getResultList();
         lineChart.getData().add(getSeries("SSTF", result));
+        String info = String.format("平均寻道长度:%.2f", sstf.getDistance() / result.size());
         try {
-            new ChartView("SSTF", lineChart).start(new Stage());
+            new ChartView("SSTF", lineChart, info).start(new Stage());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -179,8 +188,9 @@ public class Controller {
 
         ArrayList<Integer> result = scan.getResultList();
         lineChart.getData().add(getSeries("SCAN", result));
+        String info = String.format("平均寻道长度:%.2f", scan.getDistance() / result.size());
         try {
-            new ChartView("SCAN", lineChart).start(new Stage());
+            new ChartView("SCAN", lineChart, info).start(new Stage());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -198,9 +208,10 @@ public class Controller {
 
         ArrayList<Integer> result = cscan.getResultList();
         lineChart.getData().add(getSeries("CSCAN", result));
+        String info = String.format("平均寻道长度:%.2f", cscan.getDistance() / result.size());
 
         try {
-            new ChartView("CSCAN", lineChart).start(new Stage());
+            new ChartView("CSCAN", lineChart, info).start(new Stage());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -212,7 +223,31 @@ public class Controller {
         if (!allPrepared())
             return;
 
-    }
+        FCFS fcfs = new FCFS(firstLoc, trackNum, request);
+        SSTF sstf = new SSTF(firstLoc, trackNum, request);
+        SCAN scan = new SCAN(firstLoc, trackNum, maker.requestList, SCAN.POSITIVE_DIRECTION);
+        CSCAN cscan = new CSCAN(firstLoc, trackNum, request, CSCAN.POSITIVE_DIRECTION);
 
+        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
+
+        lineChart.getData().addAll(
+                getSeries("FCFS", fcfs.getResultList()),
+                getSeries("SSTF", sstf.getResultList()),
+                getSeries("SCAN", scan.getResultList()),
+                getSeries("CSCAN", cscan.getResultList())
+        );
+
+        String info = String.format("FCFS平均寻道长度:%.2f\n", fcfs.getDistance() / request.size()) +
+                String.format("SSTF平均寻道长度:%.2f\n", sstf.getDistance() / request.size()) +
+                String.format("SCAN平均寻道长度:%.2f\n", scan.getDistance() / request.size()) +
+                String.format("CSCAN平均寻道长度:%.2f\n", cscan.getDistance() / request.size());
+
+        try {
+            new ChartView("四种算法对比", lineChart, info).start(new Stage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
 }

@@ -7,12 +7,14 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ChartView extends Application {
-    LineChart<Number, Number> lineChart;
-    String title;
+    private LineChart<Number, Number> lineChart;
+    private String title;
+    private String otherInfo ;
 
-    ChartView(String title, LineChart<Number, Number> lineChart) {
+    ChartView(String title, LineChart<Number, Number> lineChart, String otherInfo) {
         this.title = title;
         this.lineChart = lineChart;
+        this.otherInfo = otherInfo;
     }
 
     @Override

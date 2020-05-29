@@ -13,14 +13,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         root = FXMLLoader.load(getClass().getResource("/grey/main.fxml"));
-        initChart();
         primaryStage.setTitle("磁盘调度算法模拟实验");
         primaryStage.setScene(new Scene(root, 1000, 800));
         primaryStage.show();
-    }
-
-    private void initChart(){
-        // TODO: 2020/5/28 设置折线图
     }
 
 

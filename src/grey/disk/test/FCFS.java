@@ -1,10 +1,6 @@
 package grey.disk.test;
 
-import grey.disk.util.RequestMaker;
-import org.junit.Test;
-
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class FCFS extends AbstractSolution {
 

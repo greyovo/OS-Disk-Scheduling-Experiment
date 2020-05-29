@@ -17,7 +17,8 @@
                 AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
 
 
-        <GridPane fx:id="gridPane" hgap="22" vgap="22" gridLinesVisible="false" style="-fx-padding:33">
+        <GridPane fx:id="gridPane" hgap="22" vgap="22" gridLinesVisible="false"
+                  style="-fx-padding:33; -fx-font-size:16">
 
             <!--标题-->
             <Text text="磁盘调度算法模拟实验测试" style="-fx-font-size:33">
@@ -76,9 +77,6 @@
                 <Button onAction="#drawSCAN" text="SCAN"/>
                 <Button onAction="#drawCSCAN" text="CSCAN"/>
                 <Button onAction="#drawAll" text="我全都要"/>
-
-                <!--TODO 余下三种情况及其按钮-->
-<!--                <Button fx:id="generateAndStartButton" onAction="#generateAndStart" text="生成并立即开始"/>-->
             </HBox>
 
             <!--序列展示-->
@@ -87,25 +85,38 @@
                 <GridPane.columnIndex>1</GridPane.columnIndex>
                 <GridPane.columnSpan>5</GridPane.columnSpan>
             </Text>
-            <TextArea fx:id="infoText" prefWidth="500" prefHeight="50" wrapText="true" editable="false">
+            <TextArea fx:id="requestInfo" prefWidth="500" prefHeight="150" wrapText="true" editable="false">
                 <GridPane.rowIndex>6</GridPane.rowIndex>
                 <GridPane.columnIndex>1</GridPane.columnIndex>
                 <GridPane.columnSpan>10</GridPane.columnSpan>
-                <GridPane.rowSpan>1</GridPane.rowSpan>
+                <GridPane.rowSpan>4</GridPane.rowSpan>
             </TextArea>
 
-            <!--结果可视化面板区域，可滚动-->
-            <ScrollPane fx:id="scrollPane" prefWidth="800" prefHeight="800">
-                <GridPane.rowIndex>7</GridPane.rowIndex>
+            <!--            &lt;!&ndash;结果可视化面板区域，可滚动&ndash;&gt;-->
+            <!--            <ScrollPane fx:id="scrollPane" prefWidth="800" prefHeight="800">-->
+            <!--                <GridPane.rowIndex>7</GridPane.rowIndex>-->
+            <!--                <GridPane.columnIndex>1</GridPane.columnIndex>-->
+            <!--                <GridPane.columnSpan>10</GridPane.columnSpan>-->
+            <!--                <GridPane.rowSpan>4</GridPane.rowSpan>-->
+            <!--                <HBox fx:id="chartBox">-->
+
+            <!--                </HBox>-->
+
+            <!--            </ScrollPane>-->
+
+            <!--文字说明-->
+            <Text text="说明：" style="-fx-font-size:22">
+                <GridPane.rowIndex>10</GridPane.rowIndex>
+                <GridPane.columnIndex>1</GridPane.columnIndex>
+                <GridPane.columnSpan>5</GridPane.columnSpan>
+            </Text>
+
+            <Label fx:id="statement" style="-fx-font-size:18">
+                <GridPane.rowIndex>11</GridPane.rowIndex>
                 <GridPane.columnIndex>1</GridPane.columnIndex>
                 <GridPane.columnSpan>10</GridPane.columnSpan>
-                <GridPane.rowSpan>4</GridPane.rowSpan>
-                <HBox fx:id="chartBox">
-
-                </HBox>
-
-            </ScrollPane>
-
+                <GridPane.rowSpan>5</GridPane.rowSpan>
+            </Label>
 
         </GridPane>
 
