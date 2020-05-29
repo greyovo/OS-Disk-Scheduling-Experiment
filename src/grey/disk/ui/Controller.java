@@ -149,7 +149,7 @@ public class Controller implements Initializable {
 
         ArrayList<Integer> result = fcfs.getResultList();
         lineChart.getData().add(getSeries("FCFS", result));
-        String info = String.format("平均寻道长度:%.2f", fcfs.getDistance() / result.size());
+        String info = String.format("平均磁头移动道数:%.2f", fcfs.getDistance() / result.size());
         try {
             new ChartView("FCFS", lineChart, info).start(new Stage());
         } catch (Exception e) {
@@ -168,7 +168,7 @@ public class Controller implements Initializable {
 
         ArrayList<Integer> result = sstf.getResultList();
         lineChart.getData().add(getSeries("SSTF", result));
-        String info = String.format("平均寻道长度:%.2f", sstf.getDistance() / result.size());
+        String info = String.format("平均磁头移动道数:%.2f", sstf.getDistance() / result.size());
         try {
             new ChartView("SSTF", lineChart, info).start(new Stage());
         } catch (Exception e) {
@@ -188,7 +188,7 @@ public class Controller implements Initializable {
 
         ArrayList<Integer> result = scan.getResultList();
         lineChart.getData().add(getSeries("SCAN", result));
-        String info = String.format("平均寻道长度:%.2f", scan.getDistance() / result.size());
+        String info = String.format("平均磁头移动道数:%.2f", scan.getDistance() / result.size());
         try {
             new ChartView("SCAN", lineChart, info).start(new Stage());
         } catch (Exception e) {
@@ -208,7 +208,7 @@ public class Controller implements Initializable {
 
         ArrayList<Integer> result = cscan.getResultList();
         lineChart.getData().add(getSeries("CSCAN", result));
-        String info = String.format("平均寻道长度:%.2f", cscan.getDistance() / result.size());
+        String info = String.format("平均磁头移动道数:%.2f", cscan.getDistance() / result.size());
 
         try {
             new ChartView("CSCAN", lineChart, info).start(new Stage());
@@ -237,10 +237,11 @@ public class Controller implements Initializable {
                 getSeries("CSCAN", cscan.getResultList())
         );
 
-        String info = String.format("FCFS平均寻道长度:%.2f\n", fcfs.getDistance() / request.size()) +
-                String.format("SSTF平均寻道长度:%.2f\n", sstf.getDistance() / request.size()) +
-                String.format("SCAN平均寻道长度:%.2f\n", scan.getDistance() / request.size()) +
-                String.format("CSCAN平均寻道长度:%.2f\n", cscan.getDistance() / request.size());
+        String info = "平均磁头移动道数\n" +
+                String.format("FCFS:%.2f    ", fcfs.getDistance() / request.size()) +
+                String.format("SSTF:%.2f    ", sstf.getDistance() / request.size()) +
+                String.format("SCAN:%.2f    ", scan.getDistance() / request.size()) +
+                String.format("CSCAN:%.2f    ", cscan.getDistance() / request.size());
 
         try {
             new ChartView("四种算法对比", lineChart, info).start(new Stage());
