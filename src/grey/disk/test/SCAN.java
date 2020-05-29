@@ -35,7 +35,7 @@ public class SCAN extends AbstractSolution {
             System.err.println("初始位置或最大磁道数未指定");
             return null;
         }
-        if (direction == -1){
+        if (direction == -1) {
             System.err.println("方向未指定");
             return null;
         }
@@ -67,7 +67,7 @@ public class SCAN extends AbstractSolution {
             while (curLocation > 0) {
                 if (requestList.contains(curLocation)) {
                     if (!resultList.isEmpty()) {
-                        distance += resultList.get(resultList.size() - 1) - curLocation;
+                        distance += Math.abs(resultList.get(resultList.size() - 1) - curLocation);
                     } else {
                         distance += Math.abs(curLocation - firstLocation);
                     }
@@ -98,7 +98,7 @@ public class SCAN extends AbstractSolution {
             while (curLocation < trackNum) {
                 if (requestList.contains(curLocation)) {
                     if (!resultList.isEmpty()) {
-                        distance += resultList.get(resultList.size() - 1) - curLocation;
+                        distance += Math.abs(resultList.get(resultList.size() - 1) - curLocation);
                     } else {
                         distance += Math.abs(curLocation - firstLocation);
                     }

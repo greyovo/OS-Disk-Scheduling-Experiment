@@ -41,7 +41,7 @@ public class Controller implements Initializable {
     private Integer[] requestArray = new Integer[444];
     private int firstLoc = -1;
     private int trackNum = -1;
-    private int direction=0;
+    private int direction = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -52,13 +52,13 @@ public class Controller implements Initializable {
         yAxis.setLabel("磁道号");
 
         statement.setText("条件说明\n" +
-                "· 请输入初始磁头位置（0~1500）和请求序列的长度（100~1000之间且需为4的倍数）\n" +
+                "· 请输入初始磁头位置（0~1500，默认为300）和请求序列的长度（100~1000之间且需为4的倍数，默认为400）\n" +
                 "· 最大磁道数已设定为1500\n" +
                 "· 先点击生成请求序列，然后再点击所需测试的算法生成折线图\n" +
                 "· [正向]、[反向]指定磁头是往磁道号增大或减小的方向扫描，用于SCAN和C-SCAN\n" +
                 "\n" +
                 "请求序列的特点\n" +
-                "· 其中50%位于 0～499，25%分布在 500～999，25%分布在 1000～1499。\n" +
+                "· 50%位于 0～499，25%分布在 500～999，25%分布在 1000～1499。\n" +
                 "\n" +
                 "算法介绍\n" +
                 "· FCFS：先来先服务算法\n" +
@@ -72,8 +72,8 @@ public class Controller implements Initializable {
         negativeRadio.setToggleGroup(toggleGroup);
         negativeRadio.setUserData(1);
         toggleGroup.selectedToggleProperty().addListener(observable -> {
-            if (toggleGroup.getSelectedToggle()!=null){
-                direction= (int) toggleGroup.getSelectedToggle().getUserData();
+            if (toggleGroup.getSelectedToggle() != null) {
+                direction = (int) toggleGroup.getSelectedToggle().getUserData();
             }
         });
 
@@ -248,8 +248,8 @@ public class Controller implements Initializable {
 
         FCFS fcfs = new FCFS(firstLoc, trackNum, request);
         SSTF sstf = new SSTF(firstLoc, trackNum, request);
-        SCAN scan = new SCAN(firstLoc, trackNum, maker.requestList, SCAN.POSITIVE_DIRECTION);
-        CSCAN cscan = new CSCAN(firstLoc, trackNum, request, CSCAN.POSITIVE_DIRECTION);
+        SCAN scan = new SCAN(firstLoc, trackNum, maker.requestList, direction);
+        CSCAN cscan = new CSCAN(firstLoc, trackNum, request, direction);
 
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
 

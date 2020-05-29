@@ -38,7 +38,7 @@
                 <GridPane.rowIndex>3</GridPane.rowIndex>
                 <GridPane.columnIndex>1</GridPane.columnIndex>
             </Text>
-            <TextField prefWidth="100" fx:id="firstLocField">
+            <TextField text="300" prefWidth="100" fx:id="firstLocField">
                 <GridPane.rowIndex>3</GridPane.rowIndex>
                 <GridPane.columnIndex>2</GridPane.columnIndex>
             </TextField>
@@ -47,7 +47,7 @@
                 <GridPane.rowIndex>3</GridPane.rowIndex>
                 <GridPane.columnIndex>3</GridPane.columnIndex>
             </Text>
-            <TextField prefWidth="100" fx:id="requestNumField">
+            <TextField text="400" prefWidth="100" fx:id="requestNumField">
                 <GridPane.rowIndex>3</GridPane.rowIndex>
                 <GridPane.columnIndex>4</GridPane.columnIndex>
             </TextField>
