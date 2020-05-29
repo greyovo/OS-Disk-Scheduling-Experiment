@@ -10,7 +10,7 @@ public class SSTF extends AbstractSolution {
     public SSTF(int firstLoc, int trackNum, ArrayList<Integer> list) {
         this.firstLocation = firstLoc;
         this.trackNum = trackNum;
-        this.requestList = list;
+        this.requestList = (ArrayList<Integer>) list.clone();
     }
 
     @Override

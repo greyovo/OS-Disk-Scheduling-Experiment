@@ -21,7 +21,7 @@ public class CSCAN extends AbstractSolution {
         this.firstLocation = firstLoc;
         this.trackNum = trackNum;
         this.direction = direction;
-        this.requestList = list;
+        this.requestList = (ArrayList<Integer>) list.clone();
     }
 
     public void setDirection(int direction) {

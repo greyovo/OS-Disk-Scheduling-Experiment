@@ -4,13 +4,15 @@ import grey.disk.util.RequestMaker;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class FCFS extends AbstractSolution {
 
     public FCFS(int firstLoc, int trackNum, ArrayList<Integer> list) {
         this.firstLocation = firstLoc;
         this.trackNum = trackNum;
-        this.requestList = list;
+//        this.requestList = (ArrayList<Integer>) list.clone();
+        this.requestList = (ArrayList<Integer>) list.clone();
     }
 
     @Override
@@ -41,6 +43,7 @@ public class FCFS extends AbstractSolution {
         System.out.println("resultList = " + resultList);
         System.out.println("=============Test Finished==============");
 
+        requestList.clear();
 
         return resultList;
     }
