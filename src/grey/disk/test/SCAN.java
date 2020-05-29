@@ -114,7 +114,7 @@ public class SCAN extends AbstractSolution {
 
         System.out.println("SCAN average distance = " + distance / resultList.size());
         System.out.println("resultList = " + resultList);
-        System.out.println("=============Test Finished==============");
+        System.out.println("=============Test Finished==============\n");
 
         return resultList;
     }

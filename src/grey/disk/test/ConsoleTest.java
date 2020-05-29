@@ -48,7 +48,6 @@ public class ConsoleTest {
 
         FCFS fcfs = new FCFS(firstLoc, trackNum, request);
         ArrayList<Integer> result = fcfs.getResultList();
-        System.out.println(result);
     }
 
     public void drawSSTF() {
@@ -58,7 +57,6 @@ public class ConsoleTest {
 
         SSTF sstf = new SSTF(firstLoc, trackNum, request);
         ArrayList<Integer> result = sstf.getResultList();
-        System.out.println(result);
     }
 
     public void drawSCAN() {
@@ -68,7 +66,6 @@ public class ConsoleTest {
 
         SCAN scan = new SCAN(firstLoc, trackNum, maker.requestList, SCAN.POSITIVE_DIRECTION);
         ArrayList<Integer> result = scan.getResultList();
-        System.out.println(result);
     }
 
     public void drawCSCAN() {
@@ -78,6 +75,5 @@ public class ConsoleTest {
 
         CSCAN cscan = new CSCAN(firstLoc, trackNum, request, CSCAN.POSITIVE_DIRECTION);
         ArrayList<Integer> result = cscan.getResultList();
-        System.out.println(result);
     }
 }

@@ -37,7 +37,7 @@ public class FCFS extends AbstractSolution {
 
         System.out.println("FCFS average distance = " + distance / requestList.size());
         System.out.println("resultList = " + resultList);
-        System.out.println("=============Test Finished==============");
+        System.out.println("=============Test Finished==============\n");
 
         requestList.clear();
 
