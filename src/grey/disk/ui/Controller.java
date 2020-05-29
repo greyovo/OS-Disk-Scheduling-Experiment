@@ -37,7 +37,7 @@ public class Controller implements Initializable {
     NumberAxis yAxis = new NumberAxis();
 
     private RequestMaker maker;
-    private static ArrayList<Integer> request;
+    private ArrayList<Integer> request;
     private Integer[] requestArray = new Integer[444];
     private int firstLoc = -1;
     private int trackNum = -1;
@@ -48,7 +48,7 @@ public class Controller implements Initializable {
         maker = new RequestMaker();
         request = new ArrayList<>();
 
-        xAxis.setLabel("访问时间");
+        xAxis.setLabel("访问顺序");
         yAxis.setLabel("磁道号");
 
         statement.setText("条件说明\n" +
