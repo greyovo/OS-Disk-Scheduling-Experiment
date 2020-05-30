@@ -1,9 +1,5 @@
 package grey.disk.test;
 
-
-import grey.disk.util.RequestMaker;
-import org.junit.Test;
-
 import java.util.ArrayList;
 
 public class CSCAN extends AbstractSolution {
@@ -34,7 +30,7 @@ public class CSCAN extends AbstractSolution {
             System.out.println("初始位置或最大磁道数未指定！");
             return null;
         }
-        if (direction == -1){
+        if (direction == -1) {
             System.err.println("方向未指定");
             return null;
         }
@@ -85,7 +81,7 @@ public class CSCAN extends AbstractSolution {
             System.out.println("未指定方向或方向错误！");
         }
 
-        System.out.println("SCAN average distance = " + distance / resultList.size());
+        System.out.println("SCAN average distance = " + distance / (resultList.size() - 1));
         System.out.println("resultList = " + resultList);
         System.out.println("=============Test Finished==============\n");
 

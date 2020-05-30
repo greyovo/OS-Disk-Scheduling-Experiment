@@ -166,7 +166,7 @@ public class Controller implements Initializable {
 
         ArrayList<Integer> result = fcfs.getResultList();
         lineChart.getData().add(getSeries("FCFS", result));
-        String info = String.format("平均磁头移动道数:%.2f", fcfs.getDistance() / result.size());
+        String info = String.format("平均磁头移动道数:%.2f", fcfs.getDistance() / request.size());
 
         try {
             new ChartView("FCFS", lineChart, info).start(new Stage());
@@ -185,7 +185,7 @@ public class Controller implements Initializable {
 
         ArrayList<Integer> result = sstf.getResultList();
         lineChart.getData().add(getSeries("SSTF", result));
-        String info = String.format("平均磁头移动道数:%.2f", sstf.getDistance() / result.size());
+        String info = String.format("平均磁头移动道数:%.2f", sstf.getDistance() / request.size());
 
         try {
             new ChartView("SSTF", lineChart, info).start(new Stage());
@@ -205,7 +205,7 @@ public class Controller implements Initializable {
 
         ArrayList<Integer> result = scan.getResultList();
         lineChart.getData().add(getSeries("SCAN", result));
-        String info = String.format("平均磁头移动道数:%.2f", scan.getDistance() / result.size());
+        String info = String.format("平均磁头移动道数:%.2f", scan.getDistance() / request.size());
 
         try {
             new ChartView("SCAN", lineChart, info).start(new Stage());
@@ -225,7 +225,7 @@ public class Controller implements Initializable {
 
         ArrayList<Integer> result = cscan.getResultList();
         lineChart.getData().add(getSeries("CSCAN", result));
-        String info = String.format("平均磁头移动道数:%.2f", cscan.getDistance() / result.size());
+        String info = String.format("平均磁头移动道数:%.2f", cscan.getDistance() / request.size());
 
         try {
             new ChartView("C-SCAN", lineChart, info).start(new Stage());

@@ -1,8 +1,5 @@
 package grey.disk.test;
 
-import grey.disk.util.RequestMaker;
-import org.junit.Test;
-
 import java.util.ArrayList;
 
 public class SSTF extends AbstractSolution {
@@ -49,7 +46,7 @@ public class SSTF extends AbstractSolution {
             minDistance = Integer.MAX_VALUE;        //距离初始化为最大值
         }
 
-        System.out.println("SSTF average distance = " + distance / resultList.size());
+        System.out.println("SSTF average distance = " + distance / (resultList.size() - 1));
         System.out.println("resultList = " + resultList);
         System.out.println("=============Test Finished==============\n");
 
