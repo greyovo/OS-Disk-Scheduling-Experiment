@@ -63,7 +63,7 @@ public class Controller implements Initializable {
                 "算法介绍\n" +
                 "· FCFS：先来先服务算法\n" +
                 "· SSTF：最短服务时间算法\n" +
-                "· SCAN：扫描算法又称电梯LOOK算法\n" +
+                "· SCAN：扫描算法，又称电梯LOOK算法\n" +
                 "· C-SCAN：循环扫描算法\n");
 
         positiveRadio.setSelected(true);

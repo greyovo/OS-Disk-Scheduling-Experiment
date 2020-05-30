@@ -79,11 +79,13 @@
             <!--    </Button>-->
 
             <!--按钮-->
-            <HBox spacing="11">
+            <HBox spacing="11" alignment="CENTER">
                 <GridPane.rowIndex>4</GridPane.rowIndex>
                 <GridPane.columnIndex>1</GridPane.columnIndex>
                 <GridPane.columnSpan>8</GridPane.columnSpan>
-                <Button fx:id="generateButton" onAction="#generateRequest" text="生成随机序列"/>
+                <Button onAction="#generateRequest" text="生成随机序列"/>
+                <Button onAction="#clear" text="清空所有"/>
+                <Label text=" | " style="-fx-font-size:17" textAlignment="CENTER"/>
                 <Button onAction="#drawFCFS" text="FCFS"/>
                 <Button onAction="#drawSSTF" text="SSTF"/>
                 <Button onAction="#drawSCAN" text="SCAN"/>
@@ -92,7 +94,7 @@
             </HBox>
 
             <!--序列展示-->
-            <Text text="生成的随机序列：" style="-fx-font-size:22">
+            <Text text="随机请求序列：" style="-fx-font-size:22">
                 <GridPane.rowIndex>5</GridPane.rowIndex>
                 <GridPane.columnIndex>1</GridPane.columnIndex>
                 <GridPane.columnSpan>5</GridPane.columnSpan>

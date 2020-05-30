@@ -23,16 +23,16 @@ public class FCFS extends AbstractSolution {
         System.out.println("requestList = " + requestList);
         System.out.println("Started test...");
 
-        resultList = new ArrayList<>();
+        resultList.clear();
         resultList.add(firstLocation);
 //        for (Integer i : requestList) {
 //            resultList.add(i);
 //            distance += Math.abs(i - requestList.get(requestList.size() - 1));
 //        }
 
-        for (int i = 0; i < requestList.size(); i++) {
-            resultList.add(requestList.get(i));
-            distance += Math.abs(i - requestList.get(requestList.size() - 1));
+        for (Integer integer : requestList) {
+            distance += Math.abs(integer - resultList.get(resultList.size() - 1));
+            resultList.add(integer);
         }
 
         System.out.println("FCFS average distance = " + distance / requestList.size());

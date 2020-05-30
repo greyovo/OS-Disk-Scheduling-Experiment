@@ -44,6 +44,8 @@ public class SCAN extends AbstractSolution {
         System.out.println("requestList = " + requestList);
         System.out.println("Started test...");
 
+        resultList.clear();
+        resultList.add(firstLocation);
         int curLocation = firstLocation;
 
         if (direction == POSITIVE_DIRECTION) {

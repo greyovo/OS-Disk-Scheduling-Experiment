@@ -43,8 +43,9 @@ public class CSCAN extends AbstractSolution {
         System.out.println("requestList = " + requestList);
         System.out.println("Started test...");
 
+        resultList.clear();
+        resultList.add(firstLocation);
         int curLocation = firstLocation;
-        resultList.add(curLocation);
 
         if (direction == POSITIVE_DIRECTION) {
             //向磁道号增大的方向扫描
