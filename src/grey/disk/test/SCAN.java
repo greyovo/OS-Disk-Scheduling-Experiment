@@ -39,6 +39,7 @@ public class SCAN extends AbstractSolution {
             System.err.println("方向未指定");
             return null;
         }
+
         System.out.println("=============SCAN Test==============");
         System.out.println("firstLocation = " + firstLocation);
         System.out.println("requestList = " + requestList);

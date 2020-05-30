@@ -12,7 +12,6 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -25,7 +24,6 @@ public class Controller implements Initializable {
     public TextField firstLocField;
     public TextField requestNumField;
     public TextField maxTrackNumField;
-    public HBox chartBox;
     public TextArea requestInfo;
     @FXML
     public Label statement;
@@ -38,7 +36,6 @@ public class Controller implements Initializable {
 
     private RequestMaker maker;
     private ArrayList<Integer> request;
-    private Integer[] requestArray = new Integer[444];
     private int firstLoc = -1;
     private int trackNum = -1;
     private int direction = 0;
@@ -66,6 +63,7 @@ public class Controller implements Initializable {
                 "· SCAN：扫描算法，又称电梯LOOK算法\n" +
                 "· C-SCAN：循环扫描算法\n");
 
+        //设置控制方向的单选按钮组，及其监听器
         positiveRadio.setSelected(true);
         positiveRadio.setToggleGroup(toggleGroup);
         positiveRadio.setUserData(0);
@@ -111,8 +109,7 @@ public class Controller implements Initializable {
 
     @FXML
     public boolean allPrepared() {
-        System.out.println("\nRequestMaker.requestList = " + maker.requestList + "\n");
-
+        trackNum = Integer.parseInt(maxTrackNumField.getText());
         try {
             firstLoc = Integer.parseInt(firstLocField.getText());
         } catch (NumberFormatException e) {
@@ -120,7 +117,6 @@ public class Controller implements Initializable {
             alert.show();
             return false;
         }
-        trackNum = Integer.parseInt(maxTrackNumField.getText());
         if (firstLoc < 0 || firstLoc > trackNum) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "磁道号小于0或大于最大磁道数");
             alert.show();
@@ -146,8 +142,6 @@ public class Controller implements Initializable {
     private void updateRequestList(ArrayList<Integer> list) {
         requestInfo.setText(list.toString());
         request = list;
-        request.trimToSize();
-//        requestArray = (Integer[]) list.toArray();
     }
 
     /**
@@ -164,7 +158,6 @@ public class Controller implements Initializable {
 
     @FXML
     private void drawFCFS() {
-
         if (!allPrepared())
             return;
 
@@ -174,6 +167,7 @@ public class Controller implements Initializable {
         ArrayList<Integer> result = fcfs.getResultList();
         lineChart.getData().add(getSeries("FCFS", result));
         String info = String.format("平均磁头移动道数:%.2f", fcfs.getDistance() / result.size());
+
         try {
             new ChartView("FCFS", lineChart, info).start(new Stage());
         } catch (Exception e) {
@@ -183,7 +177,6 @@ public class Controller implements Initializable {
 
     @FXML
     private void drawSSTF() {
-
         if (!allPrepared())
             return;
 
@@ -193,6 +186,7 @@ public class Controller implements Initializable {
         ArrayList<Integer> result = sstf.getResultList();
         lineChart.getData().add(getSeries("SSTF", result));
         String info = String.format("平均磁头移动道数:%.2f", sstf.getDistance() / result.size());
+
         try {
             new ChartView("SSTF", lineChart, info).start(new Stage());
         } catch (Exception e) {
@@ -203,15 +197,16 @@ public class Controller implements Initializable {
 
     @FXML
     public void drawSCAN() {
-
         if (!allPrepared())
             return;
 
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
         SCAN scan = new SCAN(firstLoc, trackNum, maker.requestList, direction);
+
         ArrayList<Integer> result = scan.getResultList();
         lineChart.getData().add(getSeries("SCAN", result));
         String info = String.format("平均磁头移动道数:%.2f", scan.getDistance() / result.size());
+
         try {
             new ChartView("SCAN", lineChart, info).start(new Stage());
         } catch (Exception e) {
@@ -222,7 +217,6 @@ public class Controller implements Initializable {
 
     @FXML
     public void drawCSCAN() {
-
         if (!allPrepared())
             return;
 
