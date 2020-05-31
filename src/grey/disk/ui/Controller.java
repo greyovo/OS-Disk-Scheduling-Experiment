@@ -161,12 +161,14 @@ public class Controller implements Initializable {
         if (!allPrepared())
             return;
 
-        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
         FCFS fcfs = new FCFS(firstLoc, trackNum, request);
-
         ArrayList<Integer> result = fcfs.getResultList();
+
+        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
+        lineChart.setTitle("磁头初始位置：" + firstLoc + "，请求序列长度：" + request.size());
         lineChart.getData().add(getSeries("FCFS", result));
-        String info = String.format("平均磁头移动道数:%.2f", fcfs.getDistance() / request.size());
+
+        String info = String.format("平均磁头移动道数: %.2f", fcfs.getDistance() / request.size());
 
         try {
             new ChartView("FCFS", lineChart, info).start(new Stage());
@@ -180,12 +182,14 @@ public class Controller implements Initializable {
         if (!allPrepared())
             return;
 
-        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
         SSTF sstf = new SSTF(firstLoc, trackNum, request);
-
         ArrayList<Integer> result = sstf.getResultList();
+
+        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
+        lineChart.setTitle("磁头初始位置：" + firstLoc + "，请求序列长度：" + request.size());
         lineChart.getData().add(getSeries("SSTF", result));
-        String info = String.format("平均磁头移动道数:%.2f", sstf.getDistance() / request.size());
+
+        String info = String.format("平均磁头移动道数: %.2f", sstf.getDistance() / request.size());
 
         try {
             new ChartView("SSTF", lineChart, info).start(new Stage());
@@ -200,12 +204,14 @@ public class Controller implements Initializable {
         if (!allPrepared())
             return;
 
-        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
         SCAN scan = new SCAN(firstLoc, trackNum, maker.requestList, direction);
-
         ArrayList<Integer> result = scan.getResultList();
+
+        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
+        lineChart.setTitle("磁头初始位置：" + firstLoc + "，请求序列长度：" + request.size());
         lineChart.getData().add(getSeries("SCAN", result));
-        String info = String.format("平均磁头移动道数:%.2f", scan.getDistance() / request.size());
+
+        String info = String.format("平均磁头移动道数: %.2f", scan.getDistance() / request.size());
 
         try {
             new ChartView("SCAN", lineChart, info).start(new Stage());
@@ -220,12 +226,14 @@ public class Controller implements Initializable {
         if (!allPrepared())
             return;
 
-        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
         CSCAN cscan = new CSCAN(firstLoc, trackNum, request, direction);
-
         ArrayList<Integer> result = cscan.getResultList();
+
+        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
+        lineChart.setTitle("磁头初始位置：" + firstLoc + "，请求序列长度：" + request.size());
         lineChart.getData().add(getSeries("CSCAN", result));
-        String info = String.format("平均磁头移动道数:%.2f", cscan.getDistance() / request.size());
+
+        String info = String.format("平均磁头移动道数: %.2f", cscan.getDistance() / request.size());
 
         try {
             new ChartView("C-SCAN", lineChart, info).start(new Stage());
@@ -246,6 +254,7 @@ public class Controller implements Initializable {
         CSCAN cscan = new CSCAN(firstLoc, trackNum, request, direction);
 
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
+        lineChart.setTitle("磁头初始位置：" + firstLoc + "，请求序列长度：" + request.size());
 
         lineChart.getData().addAll(
                 getSeries("FCFS", fcfs.getResultList()),
@@ -255,10 +264,10 @@ public class Controller implements Initializable {
         );
 
         String info = "平均磁头移动道数\n" +
-                String.format("FCFS:%.2f    ", fcfs.getDistance() / request.size()) +
-                String.format("SSTF:%.2f    ", sstf.getDistance() / request.size()) +
-                String.format("SCAN:%.2f    ", scan.getDistance() / request.size()) +
-                String.format("C-SCAN:%.2f    ", cscan.getDistance() / request.size());
+                String.format("FCFS: %.2f    ", fcfs.getDistance() / request.size()) +
+                String.format("SSTF: %.2f    ", sstf.getDistance() / request.size()) +
+                String.format("SCAN: %.2f    ", scan.getDistance() / request.size()) +
+                String.format("C-SCAN: %.2f    ", cscan.getDistance() / request.size());
 
         try {
             new ChartView("四种算法对比", lineChart, info).start(new Stage());
