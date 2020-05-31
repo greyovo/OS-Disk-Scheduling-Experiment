@@ -129,7 +129,7 @@
                 <GridPane.rowIndex>10</GridPane.rowIndex>
                 <GridPane.columnIndex>1</GridPane.columnIndex>
                 <GridPane.columnSpan>10</GridPane.columnSpan>
-                <GridPane.rowSpan>10</GridPane.rowSpan>
+                <GridPane.rowSpan>18</GridPane.rowSpan>
             </Label>
 
         </GridPane>
