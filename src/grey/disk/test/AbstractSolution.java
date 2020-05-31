@@ -10,10 +10,6 @@ public abstract class AbstractSolution {
     protected double distance = 0;              //跨越的磁道数
     protected int trackNum = 1500;              //最大磁道号（总磁道数）
 
-    public AbstractSolution() {
-
-    }
-
     /**
      * 检查是否完成数据初始化
      */

@@ -25,7 +25,7 @@ public class RequestMaker {
     }
 
     /**
-     * 返回一个乱序、随机的请求序列 {@link ArrayList<Integer>}
+     * 生成一个乱序、随机的请求序列 {@link ArrayList<Integer>}并保存至requestList中
      * 其中50%位于 0～499，25%分布在 500～999，25%分布在 1000～1499。
      */
     public void remakeRandomList() {
@@ -83,7 +83,7 @@ public class RequestMaker {
 
 
     /**
-     * 生成不重复的处于begin和end之间，个数为num的随机数，存放到set中
+     * 生成不重复的处于min和max之间，个数为num的随机数，存放到set中
      *
      * @param min 最小
      * @param max 最大

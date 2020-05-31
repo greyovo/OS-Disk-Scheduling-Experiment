@@ -55,11 +55,7 @@ public class SCAN extends AbstractSolution {
 
             while (curLocation < trackNum) {
                 if (requestList.contains(curLocation)) {
-                    if (!resultList.isEmpty()) {
-                        distance += Math.abs(resultList.get(resultList.size() - 1) - curLocation);
-                    } else {
-                        distance += Math.abs(curLocation - firstLocation);
-                    }
+                    distance += Math.abs(resultList.get(resultList.size() - 1) - curLocation);
                     resultList.add(curLocation);
                     requestList.remove(new Integer(curLocation));
                 }
@@ -69,11 +65,7 @@ public class SCAN extends AbstractSolution {
             //之后反向
             while (curLocation > 0) {
                 if (requestList.contains(curLocation)) {
-                    if (!resultList.isEmpty()) {
-                        distance += Math.abs(resultList.get(resultList.size() - 1) - curLocation);
-                    } else {
-                        distance += Math.abs(curLocation - firstLocation);
-                    }
+                    distance += Math.abs(resultList.get(resultList.size() - 1) - curLocation);
                     resultList.add(curLocation);
                     requestList.remove(new Integer(curLocation));
                 }
@@ -86,11 +78,7 @@ public class SCAN extends AbstractSolution {
 
             while (curLocation > 0) {
                 if (requestList.contains(curLocation)) {
-                    if (!resultList.isEmpty()) {
-                        distance += Math.abs(resultList.get(resultList.size() - 1) - curLocation);
-                    } else {
-                        distance += Math.abs(curLocation - firstLocation);
-                    }
+                    distance += Math.abs(resultList.get(resultList.size() - 1) - curLocation);
                     resultList.add(curLocation);
                     requestList.remove(new Integer(curLocation));
                 }
@@ -100,11 +88,7 @@ public class SCAN extends AbstractSolution {
             //之后反向
             while (curLocation < trackNum) {
                 if (requestList.contains(curLocation)) {
-                    if (!resultList.isEmpty()) {
-                        distance += Math.abs(resultList.get(resultList.size() - 1) - curLocation);
-                    } else {
-                        distance += Math.abs(curLocation - firstLocation);
-                    }
+                    distance += Math.abs(resultList.get(resultList.size() - 1) - curLocation);
                     resultList.add(curLocation);
                     requestList.remove(new Integer(curLocation));
                 }
